@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Support & Downloads</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #4f46e5;
+            --dark: #1e1b4b;
+            --light: #f8fafc;
+            --accent: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --background: #f3f4f6;
+            --text: #1f2937;
+            --card-bg: white;
+            --list-bg: #f8fafc;
+        }
+        
+        .dark-mode {
+            --background: #131419;
+            --text: #f1f3f5;
+            --dark: #050608;
+            --light: #2a2d3a;
+            --card-bg: #242733;
+            --list-bg: #2f3446;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        nav {
+            background-color: var(--card-bg);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            padding: 10px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+            background-color: rgba(99, 102, 241, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+        
+        section {
+            margin: 60px 0;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            padding: 50px;
+            transition: all 0.5s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+        }
+        
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 30px;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 100px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .error-list {
+            list-style: none;
+            margin-top: 40px;
+        }
+        
+        .error-item {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 16px;
+            background-color: var(--list-bg);
+            border-left: 6px solid var(--error);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .error-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .error-title {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--error);
+        }
+        
+        .error-title i {
+            margin-right: 15px;
+            font-size: 1.6rem;
+        }
+        
+        .solution {
+            margin-top: 25px;
+            padding: 25px 30px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 14px;
+            border-left: 6px solid var(--accent);
+        }
+        
+        .solution-title {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .solution-title i {
+            margin-right: 15px;
+        }
+        
+        ol, ul {
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+        
+        ol li, ul li {
+            margin-bottom: 12px;
+            padding-left: 10px;
+            line-height: 1.7;
+        }
+        
+        .tutorial-steps {
+            list-style: none;
+            counter-reset: step-counter;
+            margin: 30px 0;
+        }
+        
+        .step {
+            margin-bottom: 30px;
+            padding-left: 60px;
+            position: relative;
+        }
+        
+        .step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px -3px rgba(99, 102, 241, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5);
+            background-position: right center;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 14px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            font-size: 1.1rem;
+        }
+        
+        .discord {
+            background-color: #5865F2;
+            color: white;
+        }
+        
+        .youtube {
+            background-color: #FF0000;
+            color: white;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 20px -3px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .system-req {
+            background-color: var(--list-bg);
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+            transition: all 0.4s ease;
+        }
+        
+        .system-req:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .system-req h3 {
+            margin-bottom: 20px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            
+            section {
+                padding: 30px 20px;
+                margin: 40px 0;
+            }
+            
+            .error-item, .solution {
+                padding: 20px;
+            }
+            
+            .social-icons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* Animations and modern style 2025 */
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        @keyframes gradientBg {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, var(--primary), #4338ca, #3b82f6, var(--secondary));
+            background-size: 400% 400%;
+            animation: gradientBg 15s ease infinite;
+        }
+        
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+        }
+        
+        .note {
+            background-color: rgba(245, 158, 11, 0.1);
+            padding: 25px;
+            border-radius: 14px;
+            border-left: 6px solid var(--warning);
+            margin: 30px 0;
+            transition: all 0.4s ease;
+        }
+        
+        .note:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .note-title {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--warning);
+            margin-bottom: 15px;
+        }
+        
+        .note-title i {
+            margin-right: 15px;
+            font-size: 1.4rem;
+        }
+        
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 40px 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateZ(0);
+            transition: all 0.5s ease;
+        }
+        
+        .video-container:hover {
+            transform: translateY(-10px) translateZ(0);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+            object-fit: cover;
+        }
+        
+        /* Download area styling */
+        .download-area {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        /* Theme toggle */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background-color: rgba(99, 102, 241, 0.1);
+            margin-left: 20px;
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(99, 102, 241, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Enhanced animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Button animations */
+        .btn-hover-effect {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            background-size: 200% auto;
+            transition: 0.5s;
+        }
+        
+        .download-btn {
+            background-image: linear-gradient(to right, var(--primary) 0%, var(--secondary) 50%, var(--primary) 100%);
+            background-size: 200% auto;
+        }
+        
+        .download-btn:hover {
+            background-position: right center;
+        }
+        
+        .btn-hover-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: -1;
+            transform: translate(-100%, 0) rotate(10deg);
+            transition: transform 0.6s;
+        }
+        
+        .btn-hover-effect:hover::before {
+            transform: translate(0, 0) rotate(0);
+        }
+        
+        .fix-btn {
+            background-image: linear-gradient(to right, #ff4b2b 0%, #ff416c 50%, #ff4b2b 100%);
+            background-size: 200% auto;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .fix-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px rgba(255, 75, 43, 0.4);
+            background-position: right center;
+        }
+        
+        /* Content alignment */
+        .text-center {
+            text-align: center;
+        }
+        
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Cards and containers */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Added improved spacing for lists */
+        ol, ul {
+            margin: 0;
+            padding: 0 0 0 40px;
+        }
+        
+        ol li, ul li {
+            padding: 12px 0 12px 10px;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+        
+        /* Code styling */
+        code {
+            background-color: rgba(99, 102, 241, 0.1);
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.95em;
+        }
+        
+        /* Emphasized text */
+        .emphasis {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Cleaner Button Style */
+        .cleaner-btn {
+            background-image: linear-gradient(to right, #3b82f6 0%, #06b6d4 50%, #3b82f6 100%);
+            background-size: 200% auto;
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px -3px rgba(59, 130, 246, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        .cleaner-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.5);
+            background-position: right center;
+        }
+        
+        /* External link button */
+        .external-link-btn {
+            background-image: linear-gradient(to right, #10b981 0%, #059669 50%, #10b981 100%);
+            background-size: 200% auto;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+        
+        .external-link-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4);
+            background-position: right center;
+        }
+    </style>
+</head>
+<body>
+    <header class="gradient-bg">
+        <div class="container header-content">
+            <h1 class="fade-in">Zenith Project Technical Support Center</h1>
+            <p class="fade-in delay-1">Troubleshooting, tutorials and application downloads</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="nav-links">
+                <a href="#download" class="fade-in delay-1"><i class="fas fa-download"></i> Download</a>
+                <a href="#cleaner" class="fade-in delay-2"><i class="fas fa-broom"></i> Zenith Cleaner</a>
+                <a href="#error-fixes" class="fade-in delay-3"><i class="fas fa-bug"></i> Error Fixes</a>
+                <a href="#win-rollback" class="fade-in delay-4"><i class="fas fa-undo"></i> Windows Downgrader</a>
+                <a href="#tutorial" class="fade-in delay-5"><i class="fas fa-video"></i> Tutorials</a>
+                <a href="#social" class="fade-in delay-6"><i class="fas fa-share-alt"></i> Social</a>
+                <button id="themeToggle" class="theme-toggle fade-in delay-7">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- Download section moved to the top -->
+        <section id="download" class="fade-in">
+            <h2>Program Download</h2>
+            <p class="text-center">Download the latest version of our software with bug fixes and performance improvements.</p>
+            
+            <div class="download-area">
+                <a href="zenith.exe" download class="download-btn btn-hover-effect fade-in delay-1">
+                    <i class="fas fa-download"></i> Download Privacy Protector
+                </a>
+            </div>
+            
+            <div class="system-req fade-in delay-2">
+                <h3 class="text-center"><i class="fas fa-laptop"></i> System Requirements</h3>
+                <ul>
+                    <li><strong>Operating System:</strong> Windows 10/11 (ideally 23H2 or lower)</li>
+                    <li><strong>Internet Connection:</strong> Disable for activation</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Zenith Cleaner Section -->
+        <section id="cleaner" class="fade-in">
+            <h2>Zenith Cleaner</h2>
+            <p class="text-center">Clean and optimize your operating system to improve performance and solve hidden problems.</p>
+            
+            <div class="download-area">
+                <a href="Zenith Cleaner.exe" download class="cleaner-btn btn-hover-effect fade-in delay-1">
+                    <i class="fas fa-broom"></i> Download Zenith Cleaner V1.0
+                </a>
+            </div>
+            
+            <div class="system-req fade-in delay-2">
+                <h3 class="text-center"><i class="fas fa-shield-alt"></i> Features of Zenith Cleaner</h3>
+                <ul>
+                    <li><strong>Complete Cleanup:</strong> Removal of temporary files, cache and junk files</li>
+                    <li><strong>Registry Optimization:</strong> Repair and cleaning of system registry</li>
+                    <li><strong>Startup Management:</strong> Control and optimization of startup programs</li>
+                    <li><strong>Resource Monitoring:</strong> Performance analysis and bottleneck identification</li>
+                    <li><strong>Repair Mode:</strong> Advanced tools for diagnostics and error repair</li>
+                    <li><strong>Rockstar Games Account Unbanning:</strong> Disconnect from banned FiveM Rockstar accounts</li>
+                    <li><strong>Xbox App Removal:</strong> Complete removal of Xbox application</li>
+                    <li><strong>Private Cleanup Script:</strong> Eliminates system data for more precise cleaning (recommended)</li>
+                    <li><strong>Antivirus Control:</strong> Enable and disable antivirus protection</li>                    
+                </ul>
+            </div>
+        </section>
+        
+        <section id="error-fixes" class="fade-in">
+            <h2>Error List and Solutions</h2>
+            <p class="text-center">Check our guides to quickly solve the most common application problems.</p>
+            <ul class="error-list">
+                <li class="error-item slide-in-left delay-3">
+                    <div class="error-title"><i class="fas fa-exclamation-circle"></i> Error: Blue Screen</div>
+                    <p>When you open Zenith Privacy Protector and you happen to get a blue screen, or if you get a blue screen after using Zenith Privacy Protector for a couple of minutes, this problem occurs when there is some program on your PC that interferes with Zenith Privacy Protector.</p>
+                    
+                    <div class="solution">
+                        <div class="solution-title"><i class="fas fa-check-circle"></i> Solution:</div>
+                        <ol>
+                            <li>This happens when there are programs that interfere with Zenith Privacy Protector. Remove all programs that interfere with Zenith Privacy Protector. If you have tried everything and the problem is not resolved, we recommend resetting your PC so you'll have a clean system and won't have any more problems.</li>
+                        </ol>
+                    </div>
+                </li>
+                
+                <li class="error-item slide-in-right delay-4">
+                    <div class="error-title"><i class="fas fa-exclamation-circle"></i> Error: Failed to load the driver</div>
+                    <p>When such a problem occurs, it's a security issue with Windows on your PC.</p>
+                    
+                    <div class="solution">
+                        <div class="solution-title"><i class="fas fa-check-circle"></i> Solution:</div>
+                        <ol>
+                            <li>Verify you have installed the prerequisites .NET Framework 4.8 or higher</li>
+                            <li>Temporarily disable your antivirus as it may block the driver from loading</li>
+                            <li>Restart your operating system and try again</li>
+                            <li>Use the repair tool included in the package</li>
+                            <li>Copy the code from 9lf6dt.bat</li>
+                            <li>Create a text document and rename it to '9lf6dt.bat', then insert the code inside '9lf6dt.bat'</li>
+                            <li>Run '9lf6dt.bat' as administrator, then restart your PC and you will be able to use Zenith Privacy Protector again</li>                            
+                        </ol>
+                        <a href="9lf6dt.bat" download class="fix-btn btn-hover-effect">
+                            <i class="fas fa-wrench"></i> Download 9lf6dt.bat
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        
+        <section id="win-rollback" class="fade-in">
+            <h2>Windows Downgrader</h2>
+            <p class="text-center">If you experience compatibility issues with Windows 11, follow these steps to return to a previous stable version.</p>
+            
+            <div class="video-container fade-in delay-1">
+                <video controls>
+                    <source src="⏬ Windows 11 23H2 ISO download after 24H2 releases.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <p class="text-center fade-in delay-2">To downgrade your Windows to a more stable version, you can use Windows 23H2. This version offers better compatibility with most software and has fewer issues than recent updates.</p>
+            
+            <div class="download-area fade-in delay-3">
+                <a href="https://uupdump.net/known.php?q=category:w11-23h2" target="_blank" class="external-link-btn btn-hover-effect">
+                    <i class="fas fa-external-link-alt"></i> Download Windows 23H2
+                </a>
+            </div>
+            
+            <div class="note fade-in delay-3">
+                <div class="note-title"><i class="fas fa-info-circle"></i> Note:</div>
+                <p>If it has been more than 10 days since the upgrade or if the rollback option is not available, you will need to perform a clean installation of Windows 23H2 using the link above.</p>
+            </div>
+        </section>
+        
+        <section id="tutorial" class="fade-in">
+            <h2>Tutorial Privacy Protector</h2>
+            <p class="text-center">Learn how to use Zenith Privacy Protector with this step-by-step video tutorial.</p>
+            
+            <div class="video-container fade-in delay-1">
+                <video controls>
+                    <source src="tutorialZenithSpoofer.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+            </div>
+            
+
+        </section>
+        
+        <section id="social" class="fade-in">
+            <h2>Social Links</h2>
+            <p class="text-center">Join our community to receive support, share tips, and stay updated on future developments.</p>
+            
+            <div class="social-icons fade-in delay-1">
+                <a href="https://discord.gg/uFH7sMfbxZ" class="social-icon discord btn-hover-effect">
+                    <i class="fab fa-discord"></i> Join our Discord
+                </a>
+                <a href="https://www.youtube.com/@ZenithProject20" class="social-icon youtube btn-hover-effect">
+                    <i class="fab fa-youtube"></i> Subscribe on YouTube
+                </a>
+            </div>
+        </section>
+    </div>
+    
+    <footer class="fade-in">
+        <div class="container">
+            <p>&copy; 2025 Zenith Project. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or use default
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+        
+        // Toggle theme
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Save theme preference
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Enhanced Animation System
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 50) {
+                    element.style.opacity = 1;
+                    element.style.transform = element.classList.contains('slide-in-left') 
+                        ? 'translateX(0)' 
+                        : element.classList.contains('slide-in-right')
+                            ? 'translateX(0)'
+                            : 'translateY(0)';
+                }
+            });
+        };
+        
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set initial state for animations
+            const fadeElements = document.querySelectorAll('.fade-in:not([class*="delay-"])');
+            const leftElements = document.querySelectorAll('.slide-in-left:not([class*="delay-"])');
+            const rightElements = document.querySelectorAll('.slide-in-right:not([class*="delay-"])');
+            
+            [...fadeElements, ...leftElements, ...rightElements].forEach(el => {
+                el.style.opacity = 0;
+                
+                if (el.classList.contains('slide-in-left')) {
+                    el.style.transform = 'translateX(-50px)';
+                } else if (el.classList.contains('slide-in-right')) {
+                    el.style.transform = 'translateX(50px)';
+                } else {
+                    el.style.transform = 'translateY(30px)';
+                }
+                
+                el.style.transition = 'all 0.8s ease-out';
+            });
+            
+            // Initial animation call
+            setTimeout(animateOnScroll, 100);
+            
+            // For delayed elements with class delay-*
+            const delayedElements = document.querySelectorAll('[class*="delay-"]');
+            delayedElements.forEach(el => {
+                el.style.opacity = 0;
+                
+                if (el.classList.contains('slide-in-left')) {
+                    el.style.transform = 'translateX(-50px)';
+                } else if (el.classList.contains('slide-in-right')) {
+                    el.style.transform = 'translateX(50px)';
+                } else {
+                    el.style.transform = 'translateY(30px)';
+                }
+                
+                el.style.transition = 'all 0.8s ease-out';
+            });
+        });
+        
+        // Continue animations on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Interactive elements
+        document.querySelectorAll('.download-btn, .fix-btn, .social-icon, .cleaner-btn, .external-link-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.classList.add('animate-pulse');
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.classList.remove('animate-pulse');
+                
+                // Add temporary scale effect on leave
+                btn.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    btn.style.transform = '';
+                }, 200);
+            });
+        });
+        
+        // Section enhancement on hover
+        document.querySelectorAll('section').forEach(section => {
+            section.addEventListener('mouseenter', () => {
+                section.style.boxShadow = '0 30px 70px rgba(0, 0, 0, 0.15)';
+            });
+            
+            section.addEventListener('mouseleave', () => {
+                section.style.boxShadow = '';
+            });
+        });
+        
+        // Video play enhancement
+        document.querySelectorAll('.video-container video').forEach(video => {
+            video.addEventListener('play', function() {
+                const container = this.parentElement;
+                container.style.transform = 'translateY(-5px) scale(1.02) translateZ(0)';
+                container.style.boxShadow = '0 35px 70px rgba(0, 0, 0, 0.25)';
+            });
+            
+            video.addEventListener('pause', function() {
+                const container = this.parentElement;
+                container.style.transform = '';
+                container.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
